@@ -60,7 +60,7 @@
             <version>0.2.0-RC2</version>
         </dependency>
 
-        <!-- Logback condition表达式支持 -->
+        <!-- Logback condition 表达式支持 -->
         <dependency>
             <groupId>org.codehaus.janino</groupId>
             <artifactId>janino</artifactId>
@@ -69,6 +69,20 @@
         <dependency>
             <groupId>cn.waynechu</groupId>
             <artifactId>biz-spring-cloud-common</artifactId>
+        </dependency>
+
+        <!-- SkyWalking apm -->
+        <dependency>
+            <groupId>org.apache.skywalking</groupId>
+            <artifactId>apm-toolkit-logback-1.x</artifactId>
+            <version>${skywalking.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.skywalking</groupId>
+            <artifactId>apm-toolkit-trace</artifactId>
+            <version>${skywalking.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

@@ -10,6 +10,7 @@ import cn.waynechu.springcloud.common.util.DesensitizeUtil;
 import cn.waynechu.springcloud.common.util.StringUtil;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.skywalking.apm.toolkit.trace.TraceContext;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -60,6 +61,8 @@ public class RabbitmqLayout extends LayoutBase<ILoggingEvent> {
     }
 
     private void writeBasic(JSONObject json, ILoggingEvent event) {
+        json.put("traceId", TraceContext.traceId());
+
         json.put("parentProjectVersion", ApplicationProvider.getParentProjectVersion());
         json.put("appId", ApplicationProvider.getAppId());
         json.put("appName", ApplicationProvider.getAppName());
