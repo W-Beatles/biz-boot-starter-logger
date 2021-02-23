@@ -1,8 +1,12 @@
 # biz-boot-starter-logger
 
 ### 项目介绍
-该模块用于将日志上传到elk中(支持RabbitMQ或Kafka两种上传方式)，将异常堆栈信息上传到sentry中。
+该模块用于将日志上传，支持以下可选项:
+- ELK(支持RabbitMQ或Kafka两种上传方式) 
+- SkyWalking
+- Sentry
 
+说明：
 1. 将logback日志通过Appender发送到指定RabbitMQ消息队列/Kafka消息队列中，然后通过配置logstash的input为
 RabbitMQ、output为elasticsearch即可将日志收集到ES中并在Kibana中展示
 2. 将error级别日志通过SentryAppender发送到指定的Sentry DSN地址，便于错误日志汇总、Bug排查定位，还能及时收到应用的错误报警
@@ -57,7 +61,10 @@ RabbitMQ、output为elasticsearch即可将日志收集到ES中并在Kibana中展
     ```
 2. 添加配置
     ```
-    ## sentry
+    ## SkyWalking
+    sw.enabel=true
+
+    ## Sentry
     sentry.enable=true
     sentry.dsn=http://a1c395c85d244742ae2a50b90f1535b8@sentry.waynechu.cn:9000/2
     sentry.stacktrace-app-packages=
@@ -82,7 +89,7 @@ RabbitMQ、output为elasticsearch即可将日志收集到ES中并在Kibana中展
     ```
    
 ### 其他说明
-1. 如果抛出 `org.springframework.amqp.AmqpConnectException` Rabbit health check failed，这是因为`org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration`生效。
+1. 如果抛出 `org.springframework.amqp.AmqpConnectException` Rabbit health check failed，需添加RabbitMQ配置。
     需添加Rabbitmq配置：
     ```
     spring.rabbitmq.host=mq.waynechu.cn

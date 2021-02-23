@@ -912,7 +912,7 @@ public class AmqpAppender extends AppenderBase<ILoggingEvent> {
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
-            // https://github.com/spring-projects/spring-amqp/pull/1248
+            // see: https://github.com/spring-projects/spring-amqp/pull/1248
             catch (Exception e) {
                 addError("Could not send log message, appender is stopped", e);
             }
