@@ -1,6 +1,5 @@
 package cn.waynechu.bootstarter.logger.provider;
 
-
 import cn.waynechu.springcloud.common.util.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;

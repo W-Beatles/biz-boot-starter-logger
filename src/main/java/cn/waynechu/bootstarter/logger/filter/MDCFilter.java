@@ -9,12 +9,32 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 
-import javax.servlet.*;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static cn.waynechu.bootstarter.logger.constant.TraceKeyConstant.*;
+import static cn.waynechu.bootstarter.logger.constant.TraceKeyConstant.HEADER_KEY_API_VERSION;
+import static cn.waynechu.bootstarter.logger.constant.TraceKeyConstant.HEADER_KEY_CHANNEL;
+import static cn.waynechu.bootstarter.logger.constant.TraceKeyConstant.HEADER_KEY_DEVICE_ID;
+import static cn.waynechu.bootstarter.logger.constant.TraceKeyConstant.HEADER_KEY_ORIGIN_URL;
+import static cn.waynechu.bootstarter.logger.constant.TraceKeyConstant.HEADER_KEY_REQUEST_ID;
+import static cn.waynechu.bootstarter.logger.constant.TraceKeyConstant.HEADER_KEY_SC_CLIENT_IP;
+import static cn.waynechu.bootstarter.logger.constant.TraceKeyConstant.HEADER_KEY_TRACE_APP_IDS;
+import static cn.waynechu.bootstarter.logger.constant.TraceKeyConstant.HEADER_KEY_TRACE_APP_NAMES;
+import static cn.waynechu.bootstarter.logger.constant.TraceKeyConstant.HEADER_KEY_TRACE_HOST_ADDRESSES;
+import static cn.waynechu.bootstarter.logger.constant.TraceKeyConstant.HEADER_KEY_TRACE_HOST_NAMES;
+import static cn.waynechu.bootstarter.logger.constant.TraceKeyConstant.MDC_KEY_ORIGIN_URL;
+import static cn.waynechu.bootstarter.logger.constant.TraceKeyConstant.MDC_KEY_REQUEST_ID;
+import static cn.waynechu.bootstarter.logger.constant.TraceKeyConstant.MDC_KEY_SC_CLIENT_IP;
+import static cn.waynechu.bootstarter.logger.constant.TraceKeyConstant.MDC_KEY_TRACE_APP_IDS;
+import static cn.waynechu.bootstarter.logger.constant.TraceKeyConstant.MDC_KEY_TRACE_APP_NAMES;
+import static cn.waynechu.bootstarter.logger.constant.TraceKeyConstant.MDC_KEY_TRACE_HOST_ADDRESSES;
+import static cn.waynechu.bootstarter.logger.constant.TraceKeyConstant.MDC_KEY_TRACE_HOST_NAMES;
 
 /**
  * MDC过滤器
